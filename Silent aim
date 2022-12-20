@@ -8,7 +8,6 @@ local UserInputService = game:GetService("UserInputService")
 
 local LocalPlayer = Players.LocalPlayer
 
-local Mouse = LocalPlayer:GetMouse()
 
 local CurrentCamera = Workspace.CurrentCamera
 
@@ -54,7 +53,7 @@ local __index
 
 __index = hookmetamethod(game, "__index", function(t, k)
 
-    if (t:IsA("Mouse") and (k == "Hit" or k == "Target") and Aiming.Check()) then
+    if (t:IsA("Sight") and (k == "Hit" or k == "Target") and Aiming.Check()) then
 
         local SelectedPart = Aiming.SelectedPart
 
@@ -88,7 +87,6 @@ RunService:BindToRenderStep("AimLock", 0, function()
 
     local player = game.Players.LocalPlayer
 
-    local mouse = player:GetMouse()
 
     mouse.KeyDown:Connect(function(key)
 
